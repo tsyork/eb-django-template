@@ -77,14 +77,6 @@ WSGI_APPLICATION = 'spyglass.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-
 if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
         'default': {
@@ -94,17 +86,6 @@ if 'RDS_DB_NAME' in os.environ:
             'PASSWORD': os.environ['RDS_PASSWORD'],
             'HOST': os.environ['RDS_HOSTNAME'],
             'PORT': os.environ['RDS_PORT'],
-        }
-    }
-else: # local database for development
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'spyglass', # make sure database exists
-            'USER': 'timyork',
-            'PASSWORD': 'Pass@word1',
-            'HOST': 'localhost',
-            'PORT': '5432',
         }
     }
 
